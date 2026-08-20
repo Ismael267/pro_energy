@@ -15,7 +15,7 @@ export function CorporateCtaBanner() {
           {/* Text Left */}
           <div className="max-w-2xl text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary/20 text-secondary text-xs font-bold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5" />
+              {/* <Sparkles className="w-3.5 h-3.5" /> */}
               Espace Entreprises & Professionnels
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 leading-snug">

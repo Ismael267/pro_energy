@@ -46,9 +46,9 @@ export function Footer() {
                 <Image
                   src="/pro-energy-logo-transparent.png"
                   alt="PRO energy"
-                  width={180}
-                  height={70}
-                  className="brightness-0 invert h-14 w-auto"
+                  width={280}
+                  height={120}
+                  className="brightness-0 invert h-18 md:h-22 w-auto object-contain"
                 />
               </Link>
             </div>

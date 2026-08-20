@@ -38,10 +38,10 @@ export function PageLoader() {
         <Image
           src="/pro-energy-logo-transparent.png"
           alt="PRO ENERGY"
-          width={280}
-          height={130}
+          width={380}
+          height={180}
           priority
-          className="h-20 sm:h-24 w-auto drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)] animate-in fade-in zoom-in-95 duration-700"
+          className="h-24 sm:h-28 md:h-32 w-auto object-contain drop-shadow-[0_4px_25px_rgba(0,0,0,0.7)] animate-in fade-in zoom-in-95 duration-700"
         />
 
         {/* Animated Brand Gradient Line */}

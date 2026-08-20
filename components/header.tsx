@@ -60,16 +60,16 @@ export function Header() {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group py-1">
             <div className="relative transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/pro-energy-logo-transparent.png"
                 alt="PRO energy"
-                width={260}
-                height={120}
-                className="h-14 sm:h-16 md:h-18 w-auto"
+                width={360}
+                height={160}
+                className="h-16 sm:h-18 md:h-20 lg:h-22 w-auto object-contain"
                 priority
               />
             </div>

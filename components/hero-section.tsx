@@ -115,7 +115,7 @@ export function HeroSection() {
             
             {/* Tag Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-secondary text-xs font-bold uppercase tracking-wider mb-5">
-              <Sparkles className="w-3.5 h-3.5 text-secondary animate-pulse" />
+              {/* <Sparkles className="w-3.5 h-3.5 text-secondary animate-pulse" /> */}
               <span>{slides[currentSlide].badge}</span>
             </div>
 
