@@ -4,80 +4,73 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette to match PRO energy logo: crimson red, lime green, charcoal gray */
+  /* PRO energy: crimson red, lime green, charcoal */
   --background: oklch(0.99 0.005 106);
-  --foreground: oklch(0.3 0.02 255);
+  --foreground: oklch(0.18 0.02 255);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.3 0.02 255);
+  --card-foreground: oklch(0.18 0.02 255);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.3 0.02 255);
+  --popover-foreground: oklch(0.18 0.02 255);
   --primary: oklch(0.45 0.2 15);
   --primary-foreground: oklch(0.99 0.005 106);
-  --secondary: oklch(0.75 0.18 130);
-  --secondary-foreground: oklch(0.3 0.02 255);
+  --secondary: oklch(0.72 0.2 130);
+  --secondary-foreground: oklch(0.18 0.02 255);
   --muted: oklch(0.95 0.01 106);
   --muted-foreground: oklch(0.52 0.02 255);
-  --accent: oklch(0.75 0.18 130);
-  --accent-foreground: oklch(0.3 0.02 255);
+  --accent: oklch(0.72 0.2 130);
+  --accent-foreground: oklch(0.18 0.02 255);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0.005 106);
   --border: oklch(0.88 0.01 255);
   --input: oklch(0.88 0.01 255);
   --ring: oklch(0.45 0.2 15);
   --chart-1: oklch(0.45 0.2 15);
-  --chart-2: oklch(0.75 0.18 130);
-  --chart-3: oklch(0.3 0.02 255);
+  --chart-2: oklch(0.72 0.2 130);
+  --chart-3: oklch(0.18 0.02 255);
   --chart-4: oklch(0.55 0.15 15);
   --chart-5: oklch(0.65 0.14 130);
-  --radius: 0.5rem;
+  --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.3 0.02 255);
+  --sidebar-foreground: oklch(0.18 0.02 255);
   --sidebar-primary: oklch(0.45 0.2 15);
   --sidebar-primary-foreground: oklch(0.99 0.005 106);
   --sidebar-accent: oklch(0.95 0.01 106);
-  --sidebar-accent-foreground: oklch(0.3 0.02 255);
+  --sidebar-accent-foreground: oklch(0.18 0.02 255);
   --sidebar-border: oklch(0.88 0.01 255);
   --sidebar-ring: oklch(0.45 0.2 15);
 }
 
 .dark {
-  /* Updated dark mode colors to match PRO energy branding */
-  --background: oklch(0.2 0.02 255);
+  --background: oklch(0.14 0.02 255);
   --foreground: oklch(0.99 0.005 106);
-  --card: oklch(0.25 0.02 255);
+  --card: oklch(0.19 0.02 255);
   --card-foreground: oklch(0.99 0.005 106);
-  --popover: oklch(0.25 0.02 255);
+  --popover: oklch(0.19 0.02 255);
   --popover-foreground: oklch(0.99 0.005 106);
-  --primary: oklch(0.45 0.2 15);
+  --primary: oklch(0.55 0.22 15);
   --primary-foreground: oklch(0.99 0.005 106);
-  --secondary: oklch(0.75 0.18 130);
-  --secondary-foreground: oklch(0.3 0.02 255);
-  --muted: oklch(0.3 0.02 255);
+  --secondary: oklch(0.72 0.2 130);
+  --secondary-foreground: oklch(0.18 0.02 255);
+  --muted: oklch(0.28 0.02 255);
   --muted-foreground: oklch(0.65 0.02 255);
-  --accent: oklch(0.75 0.18 130);
-  --accent-foreground: oklch(0.3 0.02 255);
+  --accent: oklch(0.72 0.2 130);
+  --accent-foreground: oklch(0.18 0.02 255);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.99 0.005 106);
-  --border: oklch(0.3 0.02 255);
-  --input: oklch(0.3 0.02 255);
+  --border: oklch(0.28 0.02 255);
+  --input: oklch(0.28 0.02 255);
   --ring: oklch(0.65 0.02 255);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.25 0.02 255);
+  --sidebar: oklch(0.19 0.02 255);
   --sidebar-foreground: oklch(0.99 0.005 106);
-  --sidebar-primary: oklch(0.45 0.2 15);
+  --sidebar-primary: oklch(0.55 0.22 15);
   --sidebar-primary-foreground: oklch(0.99 0.005 106);
-  --sidebar-accent: oklch(0.3 0.02 255);
+  --sidebar-accent: oklch(0.28 0.02 255);
   --sidebar-accent-foreground: oklch(0.99 0.005 106);
-  --sidebar-border: oklch(0.3 0.02 255);
+  --sidebar-border: oklch(0.28 0.02 255);
   --sidebar-ring: oklch(0.65 0.02 255);
 }
 
 @theme inline {
-  /* Updated font to use Poppins */
   --font-sans: var(--font-poppins), "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
@@ -124,5 +117,181 @@
   }
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
   }
+}
+
+/* ─── PAGE LOADER ─────────────────────────────── */
+@keyframes loader-in {
+  from { opacity: 0; transform: translateY(14px) scale(.95); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+@keyframes loader-line {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes loader-out {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+@keyframes loader-glow-pulse {
+  0%, 100% { opacity: .7; transform: scale(1); }
+  50%       { opacity: 1;  transform: scale(1.18); }
+}
+
+.page-loader {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1a0a 50%, #1a1a1a 100%);
+  animation: loader-out .6s 1.2s ease-in forwards;
+}
+.page-loader__glow {
+  position: absolute; width: 360px; height: 360px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(188,219,70,.22), rgba(180,30,20,.10) 50%, transparent 72%);
+  filter: blur(18px);
+  animation: loader-glow-pulse 2s ease-in-out infinite;
+}
+.page-loader__logo,
+.page-loader__line,
+.page-loader__label { position: relative; animation: loader-in .7s ease-out both; }
+.page-loader__logo  { width: min(220px, 58vw); height: auto; }
+.page-loader__line  {
+  width: 120px; height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px; transform-origin: left;
+  animation: loader-line .9s .25s cubic-bezier(.22,1,.36,1) both;
+}
+.page-loader__label {
+  color: rgba(255,255,255,.6); font-size: .72rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  animation-delay: .3s;
+}
+
+/* ─── SCROLL REVEAL ──────────────────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: var(--sr-from, translateY(44px));
+  transition:
+    opacity   .85s ease,
+    transform .85s cubic-bezier(.22,1,.36,1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.scroll-reveal.is-visible { opacity: 1; transform: none; }
+
+/* child stagger inside revealed sections */
+.scroll-reveal.is-visible [data-stagger] {
+  animation: stagger-in .6s cubic-bezier(.22,1,.36,1) both;
+  animation-delay: calc(var(--si, 0) * 80ms + 120ms);
+}
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+
+/* ─── HERO COPY ──────────────────────────────── */
+@keyframes hero-copy-in {
+  from { opacity: 0; transform: translateY(26px); filter: blur(10px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);    }
+}
+.hero-copy           { animation: hero-copy-in .8s cubic-bezier(.22,1,.36,1) both; }
+.hero-copy--badge    { animation-delay: .05s; }
+.hero-copy--subtitle { animation-delay: .18s; }
+.hero-copy--cta      { animation-delay: .3s; }
+
+/* ─── KEN BURNS ──────────────────────────────── */
+@keyframes ken-burns {
+  from { transform: scale(1)    translate(0, 0); }
+  to   { transform: scale(1.08) translate(-1.5%, -1%); }
+}
+.ken-burns-active {
+  animation: ken-burns 7s ease-out both;
+}
+
+/* ─── SHIMMER / SKELETON ─────────────────────── */
+@keyframes shimmer {
+  from { background-position: -400px 0; }
+  to   { background-position:  400px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,.2) 50%, transparent 75%);
+  background-size: 800px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* ─── MORPHING GRADIENT (hero overlay) ──────── */
+@keyframes morph-grad {
+  0%   { opacity: .68; }
+  50%  { opacity: .78; }
+  100% { opacity: .68; }
+}
+.hero-overlay { animation: morph-grad 6s ease-in-out infinite; }
+
+/* ─── CARD 3D TILT ───────────────────────────── */
+.card-3d {
+  transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card-3d:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+  box-shadow: 0 24px 60px rgba(0,0,0,.12), 0 8px 20px rgba(0,0,0,.06);
+}
+
+/* ─── PULSE RING ─────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: scale(.9);  opacity: .8; }
+  100% { transform: scale(1.6); opacity: 0;  }
+}
+.pulse-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+/* ─── FLOATING BADGE ─────────────────────────── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+.float-y { animation: float-y 3.5s ease-in-out infinite; }
+
+/* ─── GRADIENT TEXT ──────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #c0392b, #27ae60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── SECTION DIVIDER WAVE ───────────────────── */
+.wave-divider {
+  display: block; width: 100%; overflow: hidden; line-height: 0;
+}
+.wave-divider svg { display: block; width: 100%; }
+
+/* ─── BUTTON SHINE ───────────────────────────── */
+@keyframes btn-shine {
+  from { left: -100%; }
+  to   { left: 200%;  }
+}
+.btn-shine {
+  position: relative; overflow: hidden;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute; top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  animation: btn-shine 2.4s 1.2s ease-in-out infinite;
+}
+
+/* ─── REDUCED MOTION ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .scroll-reveal { opacity: 1; transform: none; }
+  .ken-burns-active { animation: none; }
 }

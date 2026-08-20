@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useFormspark } from "@formspark/use-formspark";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,12 +16,22 @@ export function ContactSection() {
     phone: "",
     message: "",
   })
+  const id = process.env.NEXT_PUBLIC_FORMSPARK_FORM_ID || ""
+  const [submit, submitting] = useFormspark({
+    formId: process.env.NEXT_PUBLIC_FORMSPARK_FORM_ID || "",
+  });
+  // const formsparkFormId = process.env.NEXT_PUBLIC_FORMSPARK_FORM_ID
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+
+    e.preventDefault();
+    
     // Handle form submission
-    console.log("Form submitted:", formData)
+    console.log("Form submitted:", id)
   }
+//   useEffect(() => {
+// console.log("Submitting:", id);
+//   }, []);
 
   return (
     <section id="contact" className="py-20 md:py-32">
