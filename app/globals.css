@@ -77,7 +77,6 @@
 }
 
 @theme inline {
-  /* Updated font to use Poppins */
   --font-sans: var(--font-poppins), "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
@@ -125,4 +124,105 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ─── PAGE LOADER ANIMATIONS ─────────────────── */
+@keyframes loader-fade-out {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes loader-pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+}
+
+@keyframes loader-line-fill {
+  0% { transform: scaleX(0); }
+  50% { transform: scaleX(0.7); }
+  100% { transform: scaleX(1); }
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0f1013;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.page-loader.is-hiding {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(188, 219, 70, 0.25) 0%, rgba(180, 20, 20, 0.15) 50%, transparent 70%);
+  filter: blur(20px);
+  animation: loader-pulse-glow 2s ease-in-out infinite;
+}
+
+.page-loader__line-wrap {
+  width: 160px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.page-loader__line {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #c0262e, #bcdb46);
+  transform-origin: left;
+  animation: loader-line-fill 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ─── SCROLL REVEAL & UTILITIES ─────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: var(--sr-from, translateY(36px));
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #c0262e 0%, #a6ca28 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes btn-shine {
+  from { left: -100%; }
+  to { left: 200%; }
+}
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  animation: btn-shine 2.5s 1s ease-in-out infinite;
 }
