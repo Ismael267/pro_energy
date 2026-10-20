@@ -3,35 +3,35 @@ import { MapPin, Clock, CheckCircle2 } from "lucide-react"
 const stations = [
   {
     name: "Station TITA",
-    type: "Propriété",
+    
     address: "Ouagadougou, Burkina Faso",
     description: "Station principale située au cœur de la ville, offrant tous nos services 24h/24.",
     services: ["Carburant", "Lavage", "Boutique"],
   },
   {
     name: "Station Ramongo",
-    type: "Propriété",
+
     address: "Ouagadougou, Burkina Faso",
     description: "Station moderne avec services complets de lavage et entretien automobile.",
     services: ["Carburant", "Lavage", "Mécanique"],
   },
   {
     name: "Station Koloko",
-    type: "Propriété",
+    
     address: "Ouagadougou, Burkina Faso",
     description: "Station équipée avec café-shop et restauration rapide pour votre confort.",
     services: ["Carburant", "Café-Shop", "Boutique"],
   },
   {
     name: "Station Zonsé",
-    type: "Partenaire",
+    
     address: "Ouagadougou, Burkina Faso",
     description: "Station partenaire offrant carburants de qualité et services de base.",
     services: ["Carburant", "Services de base"],
   },
   {
     name: "Station Barma",
-    type: "Partenaire",
+    
     address: "Ouagadougou, Burkina Faso",
     description: "Station partenaire avec emplacement stratégique et services essentiels.",
     services: ["Carburant", "Services de base"],
@@ -56,10 +56,6 @@ export function StationsSection() {
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-semibold mb-5 border border-secondary/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-            Notre réseau
-          </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
             Nos <span className="text-secondary">Stations</span>
           </h2>
@@ -76,31 +72,18 @@ export function StationsSection() {
               key={index}
               data-stagger
               style={{ "--si": index } as React.CSSProperties}
-              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-secondary/30 transition-all duration-400 hover:shadow-2xl hover:shadow-secondary/10 cursor-default overflow-hidden"
+              className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-secondary/30 transition duration-300 hover:shadow-2xl hover:shadow-secondary/10 cursor-default overflow-hidden"
             >
               {/* Top accent */}
-              <div className={`absolute top-0 left-0 right-0 h-0.5 ${
-                station.type === "Propriété"
-                  ? "bg-gradient-to-r from-primary to-secondary"
-                  : "bg-gradient-to-r from-secondary/60 to-secondary"
-              } scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+              <div className={`absolute top-0 left-0 right-0 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
 
               <div className="flex items-start gap-4 mb-4">
-                <div className={`p-3 rounded-xl flex-shrink-0 ${
-                  station.type === "Propriété" ? "bg-primary/20" : "bg-secondary/20"
-                }`}>
-                  <MapPin className={`w-5 h-5 ${station.type === "Propriété" ? "text-primary" : "text-secondary"}`} />
+                <div className={`p-3 rounded-xl flex-shrink-0 `}>
+                  <MapPin className={`w-5 h-5`} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-bold text-white mb-1 truncate">{station.name}</h3>
-                  <span className={`inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-full font-medium ${
-                    station.type === "Propriété"
-                      ? "bg-primary/20 text-primary"
-                      : "bg-secondary/20 text-secondary"
-                  }`}>
-                    <span className="w-1 h-1 rounded-full bg-current" />
-                    {station.type}
-                  </span>
+                
                 </div>
               </div>
 

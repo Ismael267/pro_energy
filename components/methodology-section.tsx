@@ -53,10 +53,7 @@ export function MethodologySection() {
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/15 text-secondary text-sm font-semibold mb-4 border border-secondary/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-            Processus & Rigueur
-          </div>
+
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
             Notre méthode en <span className="text-secondary">5 étapes</span>
           </h2>
@@ -75,11 +72,11 @@ export function MethodologySection() {
                 key={i}
                 data-stagger
                 style={{ "--si": i } as React.CSSProperties}
-                className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-secondary/40 transition-all duration-300 group relative hover:-translate-y-2"
+                className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 hover:border-secondary/40 transition duration-300 group relative hover:-translate-y-1"
               >
                 {/* Step badge */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/70 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/70 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
                   <span className="text-3xl font-black text-white/20 group-hover:text-secondary transition-colors">
@@ -112,7 +109,7 @@ export function MethodologySection() {
             </Button>
             <a
               href="tel:04010194"
-              className="text-white hover:text-secondary font-bold text-lg px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-secondary transition-all"
+              className="text-white hover:text-secondary font-bold text-lg px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-secondary transition"
             >
               Appelez le 04 01 01 94
             </a>

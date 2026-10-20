@@ -30,10 +30,6 @@ export function GallerySection() {
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-5 border border-primary/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            Nos installations
-          </div>
           <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-4">
             Notre <span className="gradient-text">Galerie</span>
           </h2>
@@ -49,7 +45,7 @@ export function GallerySection() {
             <div
               key={index}
               data-stagger
-              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer bg-zinc-100"
+              className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 cursor-pointer bg-zinc-100"
               style={{
                 aspectRatio: index === 0 || index === 3 ? "4/3" : "1/1",
                 "--si": index,
@@ -61,18 +57,18 @@ export function GallerySection() {
                 src={image.src || "/placeholder.svg"}
                 alt={image.alt}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
 
               {/* Category badge */}
-              <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+              <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition duration-300 translate-y-2 group-hover:translate-y-0">
                 <span className="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur text-zinc-800">
                   {image.category}
                 </span>
               </div>
 
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
                 <div className="p-4 flex items-end justify-between">
                   <p className="text-white text-sm font-medium translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     {image.alt}

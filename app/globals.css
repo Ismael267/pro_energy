@@ -115,10 +115,57 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
   body {
     @apply bg-background text-foreground;
-    scroll-behavior: smooth;
   }
+  /* iOS zooms into inputs under 16px and never zooms back out. */
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1em);
+  }
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+  button,
+  [role="button"] {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  :where(a, button, [role="button"], summary):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ─── PRESS FEEDBACK ─────────────────────────── */
+/* Every pressable control answers the moment the finger lands. */
+:where(button, [role="button"], a[class*="rounded"]):not(:disabled) {
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-timing-function: var(--ease-out);
+}
+:where(button, [role="button"], a[class*="rounded"]):not(:disabled):active {
+  transform: scale(0.97);
+  transition-duration: 120ms;
 }
 
 /* ─── PAGE LOADER ─────────────────────────────── */
@@ -142,7 +189,7 @@
   position: fixed; inset: 0; z-index: 100;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d1a0a 50%, #1a1a1a 100%);
-  animation: loader-out .6s 1.2s ease-in forwards;
+  animation: loader-out .3s .7s var(--ease-out) forwards;
 }
 .page-loader__glow {
   position: absolute; width: 360px; height: 360px; border-radius: 50%;
@@ -152,47 +199,47 @@
 }
 .page-loader__logo,
 .page-loader__line,
-.page-loader__label { position: relative; animation: loader-in .7s ease-out both; }
+.page-loader__label { position: relative; animation: loader-in .4s var(--ease-out) both; }
 .page-loader__logo  { width: min(220px, 58vw); height: auto; }
 .page-loader__line  {
   width: 120px; height: 3px;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   border-radius: 2px; transform-origin: left;
-  animation: loader-line .9s .25s cubic-bezier(.22,1,.36,1) both;
+  animation: loader-line .5s .1s var(--ease-out) both;
 }
 .page-loader__label {
   color: rgba(255,255,255,.6); font-size: .72rem;
   letter-spacing: .22em; text-transform: uppercase;
-  animation-delay: .3s;
+  animation-delay: .12s;
 }
 
 /* ─── SCROLL REVEAL ──────────────────────────── */
 .scroll-reveal {
   opacity: 0;
-  transform: var(--sr-from, translateY(44px));
+  transform: var(--sr-from, translateY(16px));
   transition:
-    opacity   .85s ease,
-    transform .85s cubic-bezier(.22,1,.36,1);
+    opacity   .5s ease,
+    transform .6s var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 .scroll-reveal.is-visible { opacity: 1; transform: none; }
 
 /* child stagger inside revealed sections */
 .scroll-reveal.is-visible [data-stagger] {
-  animation: stagger-in .6s cubic-bezier(.22,1,.36,1) both;
-  animation-delay: calc(var(--si, 0) * 80ms + 120ms);
+  animation: stagger-in .4s var(--ease-out) both;
+  animation-delay: calc(min(var(--si, 0), 6) * 50ms + 80ms);
 }
 @keyframes stagger-in {
-  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0)    scale(1);   }
 }
 
 /* ─── HERO COPY ──────────────────────────────── */
 @keyframes hero-copy-in {
-  from { opacity: 0; transform: translateY(26px); filter: blur(10px); }
+  from { opacity: 0; transform: translateY(12px); filter: blur(4px); }
   to   { opacity: 1; transform: translateY(0);    filter: blur(0);    }
 }
-.hero-copy           { animation: hero-copy-in .8s cubic-bezier(.22,1,.36,1) both; }
+.hero-copy           { animation: hero-copy-in .6s var(--ease-out) both; }
 .hero-copy--badge    { animation-delay: .05s; }
 .hero-copy--subtitle { animation-delay: .18s; }
 .hero-copy--cta      { animation-delay: .3s; }
@@ -200,10 +247,10 @@
 /* ─── KEN BURNS ──────────────────────────────── */
 @keyframes ken-burns {
   from { transform: scale(1)    translate(0, 0); }
-  to   { transform: scale(1.08) translate(-1.5%, -1%); }
+  to   { transform: scale(1.05) translate(-1%, -0.5%); }
 }
 .ken-burns-active {
-  animation: ken-burns 7s ease-out both;
+  animation: ken-burns 7s linear both;
 }
 
 /* ─── SHIMMER / SKELETON ─────────────────────── */
@@ -227,13 +274,13 @@
 
 /* ─── CARD 3D TILT ───────────────────────────── */
 .card-3d {
-  transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease;
-  transform-style: preserve-3d;
-  will-change: transform;
+  transition: transform .25s var(--ease-out), box-shadow .25s ease;
 }
-.card-3d:hover {
-  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 24px 60px rgba(0,0,0,.12), 0 8px 20px rgba(0,0,0,.06);
+@media (hover: hover) and (pointer: fine) {
+  .card-3d:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px rgba(0,0,0,.10), 0 6px 16px rgba(0,0,0,.05);
+  }
 }
 
 /* ─── PULSE RING ─────────────────────────────── */
@@ -270,28 +317,37 @@
 
 /* ─── BUTTON SHINE ───────────────────────────── */
 @keyframes btn-shine {
-  from { left: -100%; }
-  to   { left: 200%;  }
+  from { transform: translateX(-100%) skewX(-20deg); }
+  to   { transform: translateX(260%) skewX(-20deg); }
 }
 .btn-shine {
   position: relative; overflow: hidden;
 }
 .btn-shine::after {
   content: "";
-  position: absolute; top: 0; left: -100%;
+  position: absolute; top: 0; left: 0;
   width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
-  animation: btn-shine 2.4s 1.2s ease-in-out infinite;
+  transform: translateX(-100%) skewX(-20deg);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-shine:hover::after { animation: btn-shine .6s var(--ease-out) 1; }
 }
 
 /* ─── REDUCED MOTION ─────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-  .scroll-reveal { opacity: 1; transform: none; }
-  .ken-burns-active { animation: none; }
+  html { scroll-behavior: auto; }
+  .scroll-reveal { transform: none; transition: opacity .3s ease; }
+  .scroll-reveal.is-visible [data-stagger] { animation: none; }
+  .hero-copy { animation: loader-in .01ms both; }
+  .ken-burns-active,
+  .hero-overlay,
+  .float-y,
+  .pulse-ring,
+  .shimmer,
+  .page-loader__glow,
+  .animate-bounce,
+  .animate-pulse { animation: none !important; }
+  :where(button, [role="button"], a):active { transform: none !important; }
 }

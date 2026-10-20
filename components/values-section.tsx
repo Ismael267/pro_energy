@@ -112,9 +112,9 @@ export function ValuesSection() {
                   key={index}
                   data-stagger
                   style={{ "--si": index } as React.CSSProperties}
-                  className={`card-3d bg-gradient-to-br ${value.color} p-6 rounded-2xl border ${value.border} hover:shadow-xl transition-all group`}
+                  className={`card-3d bg-gradient-to-br ${value.color} p-6 rounded-2xl border ${value.border} hover:shadow-xl transition group`}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300">
                     <Icon className={`w-6 h-6 ${value.iconColor}`} />
                   </div>
                   <h3 className="text-base font-bold text-zinc-900 mb-2">{value.title}</h3>

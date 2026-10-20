@@ -155,7 +155,7 @@ export function B2bSolutionsSection() {
           </p>
 
           {/* Quick commercial phone banner */}
-          <div className="mt-8 inline-flex items-center gap-3 bg-zinc-900 text-white px-6 py-3 rounded-2xl shadow-xl hover:shadow-2xl transition-all border border-white/10">
+          <div className="mt-8 inline-flex items-center gap-3 bg-zinc-900 text-white px-6 py-3 rounded-2xl shadow-xl hover:shadow-2xl transition border border-white/10">
             <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center text-white">
               <PhoneCall className="w-4 h-4 animate-bounce" />
             </div>
@@ -187,10 +187,10 @@ export function B2bSolutionsSection() {
                   key={idx}
                   data-stagger
                   style={{ "--si": idx } as React.CSSProperties}
-                  className="card-3d bg-white rounded-2xl p-7 border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                  className="card-3d bg-white rounded-2xl p-7 border border-zinc-100 shadow-sm hover:shadow-xl transition duration-300 relative overflow-hidden group"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform`}>
+                    <div className={`w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform`}>
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
@@ -249,7 +249,7 @@ export function B2bSolutionsSection() {
                 <button
                   key={sec.id}
                   onClick={() => setActiveTab(sec.id)}
-                  className={`flex items-center gap-2.5 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all duration-300 ${
+                  className={`flex items-center gap-2.5 px-6 py-3.5 rounded-2xl font-bold text-sm transition duration-300 ${
                     isActive
                       ? "bg-primary text-white shadow-xl shadow-primary/25 scale-105"
                       : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200"
@@ -263,7 +263,7 @@ export function B2bSolutionsSection() {
           </div>
 
           {/* Active Tab Content Display */}
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-zinc-100 relative overflow-hidden transition-all">
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-zinc-100 relative overflow-hidden transition">
             
             {/* Header of tab */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-zinc-100 mb-8">
@@ -339,7 +339,7 @@ export function B2bSolutionsSection() {
                 </h5>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                   {currentSector.steps?.map((st, i) => (
-                    <div key={i} className="bg-zinc-50 rounded-2xl p-5 border border-zinc-100 relative group hover:border-primary/30 transition-all">
+                    <div key={i} className="bg-zinc-50 rounded-2xl p-5 border border-zinc-100 relative group hover:border-primary/30 transition">
                       <div className="text-2xl font-black text-primary/40 mb-2 group-hover:text-primary transition-colors">
                         {st.num}
                       </div>
@@ -380,7 +380,7 @@ export function B2bSolutionsSection() {
                 {currentSector.targets?.map((tgt, i) => {
                   const Icon = tgt.icon
                   return (
-                    <div key={i} className="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 hover:shadow-md transition-all flex items-start gap-4">
+                    <div key={i} className="bg-zinc-50 rounded-2xl p-6 border border-zinc-100 hover:shadow-md transition flex items-start gap-4">
                       <div className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center flex-shrink-0 shadow-md">
                         <Icon className="w-6 h-6" />
                       </div>

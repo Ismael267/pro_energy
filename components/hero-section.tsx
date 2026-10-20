@@ -2,27 +2,24 @@
 
 import { PhoneCall, ArrowDown, ChevronLeft, ChevronRight, Fuel, HardHat, Truck } from "lucide-react"
 import Image from "next/image"
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 
 const slides = [
   {
     image: "/pro-energy-station-full.png",
-    tag: "Approvisionnement Fiable & Continu",
     title: "Votre Partenaire pour un Approvisionnement Fiable en Carburant",
     subtitle: "Du carburant à la solution complète d'approvisionnement pour stations, entreprises, BTP et flottes professionnelles.",
     accent: "from-black/90 via-black/60 to-transparent",
   },
   {
     image: "/station-service-moderne-pompes.jpg",
-    tag: "Chantiers & Professionnels",
     title: "Le Carburant Directement sur Votre Chantier",
     subtitle: "Mise en place de citernes, pompes et livraisons régulières adaptées à vos volumes et contraintes de terrain.",
     accent: "from-black/85 via-black/55 to-transparent",
   },
   {
     image: "/pro-energy-cafe-shop.png",
-    tag: "Réseau & Services",
     title: "5 Stations-Service Ouvertes 24h/24, 7j/7",
     subtitle: "Carburants haute qualité, boutiques, lavage et café-shop pour les usagers de la route et les transporteurs.",
     accent: "from-black/85 via-black/55 to-transparent",
@@ -58,16 +55,39 @@ export function HeroSection() {
   const nextSlide = () => goTo((currentSlide + 1) % slides.length)
   const prevSlide = () => goTo((currentSlide - 1 + slides.length) % slides.length)
 
+  const touchStart = useRef<{ x: number; y: number; time: number } | null>(null)
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0]
+    touchStart.current = { x: t.clientX, y: t.clientY, time: Date.now() }
+  }
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStart.current
+    touchStart.current = null
+    if (!start) return
+    const t = e.changedTouches[0]
+    const dx = t.clientX - start.x
+    if (Math.abs(dx) < Math.abs(t.clientY - start.y)) return
+    // A quick flick counts even when short
+    const velocity = Math.abs(dx) / Math.max(Date.now() - start.time, 1)
+    if (Math.abs(dx) < 60 && velocity < 0.4) return
+    if (dx < 0) nextSlide()
+    else prevSlide()
+  }
+
   return (
     <section
       id="accueil"
-      className="relative min-h-[100svh] flex items-center overflow-hidden bg-black"
+      className="relative min-h-[100svh] flex items-center overflow-hidden bg-black touch-pan-y"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       {/* Slides images */}
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
+          className={`absolute inset-0 transition-opacity duration-700 ${
             index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
@@ -90,7 +110,7 @@ export function HeroSection() {
         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 group"
         aria-label="Slide précédent"
       >
-        <div className="flex items-center justify-center w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:scale-110 shadow-lg">
+        <div className="flex items-center justify-center w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition duration-300 group-hover:bg-primary group-hover:border-primary group-hover:scale-105 shadow-lg">
           <ChevronLeft className="w-5 h-5" />
         </div>
       </button>
@@ -99,7 +119,7 @@ export function HeroSection() {
         className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 group"
         aria-label="Slide suivant"
       >
-        <div className="flex items-center justify-center w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition-all duration-300 group-hover:bg-primary group-hover:border-primary group-hover:scale-110 shadow-lg">
+        <div className="flex items-center justify-center w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition duration-300 group-hover:bg-primary group-hover:border-primary group-hover:scale-105 shadow-lg">
           <ChevronRight className="w-5 h-5" />
         </div>
       </button>
@@ -108,14 +128,6 @@ export function HeroSection() {
       <div className="container mx-auto px-4 relative z-20 pt-32 pb-24">
         <div className="max-w-4xl">
           
-          {/* Tag badge */}
-          <div
-            key={`tag-${currentSlide}`}
-            className="hero-copy hero-copy--badge inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-secondary/20 backdrop-blur-md border border-secondary/40 text-secondary text-xs font-bold tracking-wider uppercase"
-          >
-            <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-            {slides[currentSlide].tag}
-          </div>
 
           {/* Title */}
           <h1
@@ -157,7 +169,7 @@ export function HeroSection() {
             
             <a
               href="tel:04010194"
-              className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-6 py-3.5 rounded-full font-bold text-sm transition-all hover:scale-105"
+              className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-6 py-3.5 rounded-full font-bold text-sm transition hover:scale-105"
             >
               <div className="w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-white">
                 <PhoneCall className="w-3.5 h-3.5" />
@@ -172,7 +184,7 @@ export function HeroSection() {
               <button
                 key={index}
                 onClick={() => goTo(index)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
+                className={`relative h-1.5 rounded-full transition-[width,background-color] duration-300 ease-[var(--ease-out)] before:absolute before:-inset-3 before:content-[""] ${
                   index === currentSlide
                     ? "w-8 bg-secondary"
                     : "w-1.5 bg-white/40 hover:bg-white/60"

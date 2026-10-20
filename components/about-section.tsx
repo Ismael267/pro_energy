@@ -23,7 +23,7 @@ export function AboutSection() {
                 src="/pro-energy-station-full.png"
                 alt="Station PRO energy"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
@@ -31,7 +31,7 @@ export function AboutSection() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative flex items-center justify-center w-18 h-18">
                   <span className="pulse-ring text-white/50" />
-                  <div className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur shadow-xl transition-transform duration-300 group-hover:scale-110">
+                  <div className="relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur shadow-xl transition-transform duration-300 group-hover:scale-105">
                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-primary ml-1">
                       <path d="M8 5v14l11-7z" />
                     </svg>
@@ -65,8 +65,8 @@ export function AboutSection() {
 
           {/* Text side */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-6 border border-secondary/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5   text-secondary text-sm font-semibold mb-6">
+              {/* <span className="w-1.5 h-1.5 rounded-full bg-secondary" /> */}
               Présentation ProEnergy
             </div>
 

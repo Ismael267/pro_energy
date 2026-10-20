@@ -14,7 +14,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-svh">
       <Header />
       <HeroSection />
       

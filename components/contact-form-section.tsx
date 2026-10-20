@@ -85,10 +85,6 @@ export function ContactFormSection() {
           
           {/* Header */}
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/15 text-secondary text-sm font-bold mb-4 border border-secondary/30">
-              <Sparkles className="w-4 h-4 text-secondary" />
-              Passez à l'Action
-            </div>
             <h2 className="text-3xl md:text-5xl font-extrabold text-zinc-900 mb-4 leading-tight">
               Parlons de votre consommation et construisons <br className="hidden sm:inline" />
               <span className="gradient-text">votre solution d'approvisionnement</span>
@@ -135,7 +131,7 @@ export function ContactFormSection() {
                 return (
                   <div
                     key={i}
-                    className={`card-3d bg-white rounded-2xl p-6 border ${info.border} shadow-sm hover:shadow-xl transition-all duration-300 ${
+                    className={`card-3d bg-white rounded-2xl p-6 border ${info.border} shadow-sm hover:shadow-xl transition duration-300 ${
                       info.highlight ? "ring-2 ring-secondary/40" : ""
                     }`}
                   >
@@ -240,7 +236,7 @@ export function ContactFormSection() {
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="w-full btn-shine bg-gradient-to-r from-primary to-primary/85 hover:from-primary/90 hover:to-primary text-white rounded-xl py-6 text-base font-bold shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full btn-shine bg-gradient-to-r from-primary to-primary/85 hover:from-primary/90 hover:to-primary text-white rounded-xl py-6 text-base font-bold shadow-xl shadow-primary/25 hover:shadow-primary/40 transition duration-300 flex items-center justify-center gap-2"
                   >
                     {submitting ? (
                       <>

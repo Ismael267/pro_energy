@@ -68,10 +68,6 @@ export function ServicesSection() {
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-5 border border-primary/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            Ce que nous offrons
-          </div>
           <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-4">
             Nos <span className="gradient-text">Services</span>
           </h2>
@@ -90,13 +86,13 @@ export function ServicesSection() {
                 key={index}
                 data-stagger
                 style={{ "--si": index } as React.CSSProperties}
-                className="card-3d group bg-white rounded-2xl p-7 border border-zinc-100 hover:border-transparent hover:shadow-2xl transition-all duration-400 relative overflow-hidden cursor-default"
+                className="card-3d group bg-white rounded-2xl p-7 border border-zinc-100 hover:border-transparent hover:shadow-2xl transition duration-300 relative overflow-hidden cursor-default"
               >
                 {/* Hover background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-zinc-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* Icon */}
-                <div className={`relative z-10 flex items-center justify-center w-14 h-14 rounded-xl ${service.accent} mb-5 shadow-lg ${service.glow} group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
+                <div className={`relative z-10 flex items-center justify-center w-14 h-14 rounded-xl ${service.accent} mb-5 shadow-lg ${service.glow} group-hover:scale-105 group-hover:shadow-xl transition duration-300`}>
                   <Icon className="w-7 h-7 text-white" />
                 </div>
 
@@ -109,7 +105,7 @@ export function ServicesSection() {
                 </p>
 
                 {/* Bottom accent line */}
-                <div className={`absolute bottom-0 left-0 right-0 h-0.5 ${service.accent} scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left`} />
+                <div className={`absolute bottom-0 left-0 right-0 h-0.5 ${service.accent} scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
               </div>
             )
           })}

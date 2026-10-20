@@ -46,7 +46,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top,0px)] transition duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-zinc-900/5 border-b border-zinc-200/80"
           : "bg-white/98 backdrop-blur-md border-b border-zinc-200/60"
@@ -54,7 +54,7 @@ export function Header() {
     >
       {/* Top bar blanc épuré */}
       <div
-        className={`hidden md:flex items-center justify-between px-8 text-xs border-b border-zinc-100 overflow-hidden transition-all duration-500 ${
+        className={`hidden md:flex items-center justify-between px-8 text-xs border-b border-zinc-100 overflow-hidden transition-[height,padding,opacity] duration-200 ease-[var(--ease-out)] ${
           scrolled ? "h-0 py-0 opacity-0" : "h-9 py-1.5 opacity-100 bg-zinc-50/90 text-zinc-600"
         }`}
       >
@@ -100,7 +100,7 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
+                  className={`relative px-4 py-2 text-sm font-semibold rounded-full transition duration-300 ${
                     isActive
                       ? "text-white bg-primary shadow-md shadow-primary/25"
                       : "text-zinc-700 hover:text-zinc-950 hover:bg-white"
@@ -119,7 +119,7 @@ export function Header() {
           <div className="hidden md:flex items-center gap-3">
             <Button
               asChild
-              className="bg-primary hover:bg-primary/90 text-white font-bold btn-shine rounded-full px-6 py-5 shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-primary/30"
+              className="bg-primary hover:bg-primary/90 text-white font-bold btn-shine rounded-full px-6 py-5 shadow-lg shadow-primary/20 transition duration-300 hover:scale-105 hover:shadow-primary/30"
             >
               <a href="#contact">Devis & Contact</a>
             </Button>
@@ -132,7 +132,7 @@ export function Header() {
             aria-label="Toggle menu"
           >
             <span
-              className={`transition-all duration-300 ${isMenuOpen ? "rotate-90 scale-110" : "rotate-0 scale-100"}`}
+              className={`transition duration-300 ${isMenuOpen ? "rotate-90 scale-110" : "rotate-0 scale-100"}`}
             >
               {isMenuOpen ? (
                 <X className="w-5 h-5 text-zinc-900" />
@@ -145,7 +145,7 @@ export function Header() {
 
         {/* Mobile menu */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-400 ease-in-out ${
+          className={`lg:hidden overflow-hidden overscroll-contain transition-[max-height,opacity,padding] duration-300 ease-[var(--ease-out)] ${
             isMenuOpen ? "max-h-[520px] opacity-100 pb-5" : "max-h-0 opacity-0"
           }`}
         >
@@ -155,7 +155,7 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-semibold text-zinc-700 hover:text-primary hover:bg-white px-4 py-2.5 rounded-xl transition-all flex items-center justify-between"
+                  className="text-sm font-semibold text-zinc-700 hover:text-primary hover:bg-white px-4 py-2.5 rounded-xl transition flex items-center justify-between"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <span>{link.label}</span>
