@@ -141,7 +141,7 @@ export function Footer() {
             <div className="flex gap-2">
               <a
                 href="https://www.facebook.com/profile.php?id=61585097331864"
-                className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/8 hover:bg-primary border border-white/10 hover:border-primary text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/8 hover:bg-primary border border-white/10 hover:border-primary text-zinc-400 hover:text-white pressable"
                 aria-label="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -150,7 +150,7 @@ export function Footer() {
               </a>
               <a
                 href="https://www.linkedin.com/company/proenergy-industries/about/"
-                className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/8 hover:bg-secondary border border-white/10 hover:border-secondary text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                className="flex items-center justify-center w-9 h-9 rounded-xl bg-white/8 hover:bg-secondary border border-white/10 hover:border-secondary text-zinc-400 hover:text-white pressable"
                 aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"

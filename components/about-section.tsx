@@ -4,13 +4,13 @@ import Image from "next/image"
 
 export function AboutSection() {
   return (
-    <section id="apropos" className="py-20 md:py-32 bg-white">
+    <section id="apropos" className="bg-background py-20 md:py-32">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-video bg-zinc-100 flex items-center justify-center group cursor-pointer">
+          <div className="relative aspect-video cursor-pointer overflow-hidden rounded-xl bg-zinc-100 shadow-xl group">
             <Image src="/pro-energy-station-full.png" alt="Station PRO energy" fill className="object-cover" />
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-105 transition-transform duration-200 ease-[var(--ease-out)]">
                 <Play className="w-8 h-8 text-primary ml-1" fill="currentColor" />
               </div>
             </div>

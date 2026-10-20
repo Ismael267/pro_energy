@@ -14,55 +14,32 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-[100dvh] bg-white">
       <Header />
-      
-      {/* Hero Section & Quick Actions Strip */}
       <HeroSection />
-      
-      {/* 3 Grands Pôles d'Activités (TotalEnergies Style) */}
-      <ScrollReveal direction="up">
-        <FeaturedHubSection />
-      </ScrollReveal>
-
-      {/* Solutions B2B & Approvisionnement en Carburant */}
-      <ScrollReveal delay={60} direction="up">
+      <FeaturedHubSection />
+      <ScrollReveal>
         <B2bSolutionsSection />
       </ScrollReveal>
-
-      {/* Méthode en 5 étapes */}
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <MethodologySection />
       </ScrollReveal>
-
-      {/* Bandeau Corporate Call to Action */}
       <CorporateCtaBanner />
-
-      {/* Présentation Marque & Réseau */}
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <AboutSection />
       </ScrollReveal>
-
-      {/* Services Réseau Particuliers & Stations */}
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <ServicesSection />
       </ScrollReveal>
-
-      {/* Les 5 Stations */}
-      <ScrollReveal delay={60} direction="fade">
+      <ScrollReveal>
         <StationsSection />
       </ScrollReveal>
-
-      {/* Galerie Photos */}
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <GallerySection />
       </ScrollReveal>
-
-      {/* Formulaire Commercial & Contact */}
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <ContactFormSection />
       </ScrollReveal>
-
       <Footer />
     </main>
   );

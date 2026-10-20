@@ -28,12 +28,12 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen pt-20">
+    <main className="page-shell min-h-[100dvh]">
       <Header />
-      <ScrollReveal direction="up">
+      <ScrollReveal>
         <ServicesSection />
       </ScrollReveal>
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <ContactFormSection />
       </ScrollReveal>
       <Footer />

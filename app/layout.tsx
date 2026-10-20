@@ -1,15 +1,8 @@
 import type React from "react"
-import type { Metadata } from "next"
-import { Poppins } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Toaster } from "sonner"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-  display: "swap",
-})
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://proenergy-bf.com"
 
@@ -95,6 +88,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#121311" },
+  ],
 }
 
 // JSON-LD Structured Data for LocalBusiness & GasStation
@@ -190,9 +194,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${poppins.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <PageLoader />
         {children}
+        <Toaster theme="light" position="bottom-right" richColors />
         <Analytics />
       </body>
     </html>

@@ -175,7 +175,7 @@ export function B2bSolutionsSection() {
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm hover:shadow-md transition-all duration-300 group"
+                  className="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-[box-shadow,transform] duration-200 ease-[var(--ease-out)] group"
                 >
                   <div className="flex items-start gap-4 mb-3">
                     <div className={`w-11 h-11 rounded-xl ${item.iconBg} flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
@@ -224,7 +224,7 @@ export function B2bSolutionsSection() {
                 <button
                   key={sec.id}
                   onClick={() => setActiveTab(sec.id)}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm transition-all ${
+                  className={`pressable flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm ${
                     isActive
                       ? "bg-primary text-white shadow-md shadow-primary/20"
                       : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200"

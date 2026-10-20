@@ -30,15 +30,15 @@ export const metadata: Metadata = {
 
 export default function SolutionsProPage() {
   return (
-    <main className="min-h-screen pt-20">
+    <main className="page-shell min-h-[100dvh]">
       <Header />
-      <ScrollReveal direction="up">
+      <ScrollReveal>
         <B2bSolutionsSection />
       </ScrollReveal>
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <MethodologySection />
       </ScrollReveal>
-      <ScrollReveal delay={60} direction="up">
+      <ScrollReveal>
         <ContactFormSection />
       </ScrollReveal>
       <Footer />

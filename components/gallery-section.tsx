@@ -2,10 +2,12 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { SectionHeading } from "@/components/section-heading"
 
 const galleryImages = [
-  { src: "/pro-energy-station-full.png", alt: "Vue extérieure station PRO energy" },
-  { src: "/pro-energy-cafe-shop.png", alt: "Cafe Shop PRO energy" },
+  { src: "/pro-energy-station-full.png", alt: "Vue extérieure station PRO ENERGY" },
+  { src: "/pro-energy-cafe-shop.png", alt: "Café Shop PRO ENERGY" },
   { src: "/pro-energy-price-sign.png", alt: "Panneau de prix" },
   { src: "/pro-energy-3d-mockup.png", alt: "Maquette 3D de la station" },
   { src: "/station-service-moderne-pompes.jpg", alt: "Pompes à essence" },
@@ -16,51 +18,51 @@ export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
   return (
-    <section id="gallery" className="py-20 md:py-32 bg-white">
+    <section id="gallery" className="bg-[#eef4fc] py-20 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 mb-4 text-balance">Galerie</h2>
-          <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-lg text-zinc-600 leading-relaxed">
-            Découvrez nos installations modernes et nos services de qualité en images.
-          </p>
-        </div>
+        <SectionHeading
+          className="mb-14"
+          eyebrow="Installations"
+          title="Galerie"
+          description="Nos stations, nos services, notre exigence — en images."
+        />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 lg:grid-cols-3">
           {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              className="relative h-64 rounded-xl overflow-hidden shadow-lg cursor-pointer group"
+            <button
+              key={image.src}
+              type="button"
+              className="pressable group relative h-64 overflow-hidden rounded-xl bg-zinc-200 text-left shadow-sm"
               onClick={() => setSelectedImage(index)}
             >
-              <Image
-                src={image.src || "/placeholder.svg"}
-                alt={image.alt}
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <p className="text-white font-medium text-center px-4">{image.alt}</p>
-              </div>
-            </div>
+              <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-300 ease-[var(--ease-out)] group-hover:scale-[1.03]" />
+              <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-sm font-medium text-white">
+                {image.alt}
+              </span>
+            </button>
           ))}
         </div>
 
-        {selectedImage !== null && (
-          <div
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedImage(null)}
+        <Dialog open={selectedImage !== null} onOpenChange={(open) => !open && setSelectedImage(null)}>
+          <DialogContent
+            showCloseButton
+            className="max-h-[90vh] w-full max-w-5xl overflow-hidden border-0 bg-zinc-950 p-0 text-white sm:max-w-5xl"
           >
-            <div className="relative max-w-5xl w-full h-[80vh]">
-              <Image
-                src={galleryImages[selectedImage].src || "/placeholder.svg"}
-                alt={galleryImages[selectedImage].alt}
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-        )}
+            <DialogTitle className="sr-only">
+              {selectedImage !== null ? galleryImages[selectedImage].alt : "Image"}
+            </DialogTitle>
+            {selectedImage !== null ? (
+              <div className="relative h-[80vh] w-full">
+                <Image
+                  src={galleryImages[selectedImage].src}
+                  alt={galleryImages[selectedImage].alt}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            ) : null}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   )

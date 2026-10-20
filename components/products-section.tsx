@@ -41,13 +41,13 @@ export function ProductsSection() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {products.map((product, index) => (
-            <Card key={index} className="border-none bg-white hover:shadow-2xl transition-all overflow-hidden group">
+            <Card key={index} className="border-none bg-white hover:shadow-2xl transition-shadow duration-200 overflow-hidden group">
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={product.image || "/placeholder.svg"}
                   alt={product.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="object-cover group-hover:scale-[1.04] transition-transform duration-300 ease-[var(--ease-out)]"
                 />
               </div>
               <CardContent className="p-6">

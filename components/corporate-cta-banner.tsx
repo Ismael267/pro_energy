@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button"
 
 export function CorporateCtaBanner() {
   return (
-    <section className="py-14 bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 text-white relative overflow-hidden">
+    <section className="relative overflow-hidden bg-white py-14 text-white">
       {/* Subtle Glows */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-secondary/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto rounded-3xl p-8 md:p-12 border border-white/10 bg-white/5 backdrop-blur-md flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="max-w-6xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-r from-primary via-[#b90c2b] to-primary p-8 shadow-xl md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8">
           
           {/* Text Left */}
           <div className="max-w-2xl text-center lg:text-left">
@@ -36,7 +36,7 @@ export function CorporateCtaBanner() {
 
             <a
               href="tel:04010194"
-              className="flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3.5 rounded-xl border border-white/15 transition-all text-sm"
+              className="flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-3.5 rounded-xl border border-white/15 pressable text-sm"
             >
               <PhoneCall className="w-4 h-4 text-secondary" />
               <span>Commercial : <strong className="text-secondary">04 01 01 94</strong></span>

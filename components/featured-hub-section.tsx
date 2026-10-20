@@ -1,116 +1,86 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, HardHat, Fuel, Truck, Sparkles, CheckCircle2 } from "lucide-react"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { SectionHeading } from "@/components/section-heading"
+import { ScrollReveal } from "@/components/scroll-reveal"
 
 const featuredHubs = [
   {
     tag: "BTP & Grands Travaux",
-    badgeColor: "bg-amber-500/10 text-amber-700 border-amber-500/20",
-    title: "Le Carburant Directement sur Votre Chantier",
-    desc: "Mise à disposition de citernes, pompes de distribution et organisation de livraisons planifiées pour maximiser le rendement de vos engins.",
-    points: ["Installation de citerne sécurisée", "Zéro déplacement pour vos machines", "Suivi précis des volumes consommés"],
+    title: "Le carburant directement sur votre chantier",
+    desc: "Citernes, pompes de distribution et livraisons planifiées pour maximiser le rendement de vos engins.",
+    points: ["Citerne sécurisée", "Zéro déplacement machine", "Suivi des volumes"],
     image: "/station-service-moderne-pompes.jpg",
-    cta: "Découvrir la solution BTP",
+    cta: "Solution BTP",
     href: "/solutions-pro#btp",
   },
   {
-    tag: "Réseau Stations & Particuliers",
-    badgeColor: "bg-primary/10 text-primary border-primary/20",
-    title: "5 Stations-Service Ouvertes 24h/24 & 7j/7",
-    desc: "Retrouvez des carburants premium (Super, Diesel), un service de lavage complet, de la vidange mécanique rapide et nos boutiques café-shop.",
-    points: ["Carburants haute performance", "Lavage auto professionnel", "Boutiques et restauration rapide"],
+    tag: "Réseau & particuliers",
+    title: "Cinq stations ouvertes 24h/24 et 7j/7",
+    desc: "Carburants premium, lavage, vidange rapide et boutiques café-shop, partout près de vous.",
+    points: ["Super et diesel", "Lavage professionnel", "Café-shop"],
     image: "/pro-energy-station-full.png",
-    cta: "Localiser nos 5 stations",
+    cta: "Localiser une station",
     href: "/stations",
   },
   {
-    tag: "Flottes & Transporteurs",
-    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-500/20",
-    title: "Gestion d'Approvisionnement pour Flottes",
-    desc: "Conditions commerciales étudiées selon vos volumes avec un interlocuteur dédié pour assurer la continuité opérationnelle de votre parc de véhicules.",
-    points: ["Conditions tarifaires avantageuses", "Fournisseur unique centralisé", "Interlocuteur commercial dédié"],
+    tag: "Flottes & transporteurs",
+    title: "Un approvisionnement pensé pour votre parc",
+    desc: "Conditions commerciales selon vos volumes, avec un interlocuteur dédié à la continuité opérationnelle.",
+    points: ["Tarifs adaptés", "Fournisseur unique", "Suivi commercial"],
     image: "/pro-energy-price-sign.png",
-    cta: "Voir l'offre flottes",
+    cta: "Offre flottes",
     href: "/solutions-pro#flottes",
   },
 ]
 
 export function FeaturedHubSection() {
   return (
-    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+    <section className="relative overflow-hidden bg-white py-20 md:py-28">
       <div className="container mx-auto px-4">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/15 text-zinc-900 text-xs font-bold uppercase tracking-wider mb-4 border border-secondary/30">
-           
-            Nos Activités & Métiers
-          </div>
-          <h2 className="text-3xl md:text-5xl font-black text-zinc-900 mb-4 leading-tight">
-            Des solutions énergétiques adaptées à <span className="gradient-text">chaque besoin</span>
-          </h2>
-          <p className="text-zinc-600 text-sm md:text-base leading-relaxed">
-            Découvrez nos pôles d'activités pensés pour soutenir la mobilité des particuliers et la performance des entreprises.
-          </p>
-        </div>
+        <SectionHeading
+          className="mb-14"
+          eyebrow="Nos métiers"
+          title={
+            <>
+              Des solutions adaptées à <span className="gradient-text">chaque besoin</span>
+            </>
+          }
+          description="Trois pôles pour soutenir la mobilité des particuliers et la performance des entreprises."
+        />
 
-        {/* 3 Featured Cards Grid (TotalEnergies Style) */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {featuredHubs.map((hub, i) => (
-            <div
-              key={i}
-              className="group bg-zinc-50 rounded-3xl overflow-hidden border border-zinc-200/80 shadow-md hover:shadow-2xl transition-all duration-400 flex flex-col justify-between hover:-translate-y-1.5"
-            >
-              {/* Image with zoom effect */}
-              <div className="relative h-56 w-full overflow-hidden bg-zinc-200">
-                <Image
-                  src={hub.image}
-                  alt={hub.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-108"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {/* Tag Badge on Image */}
-                <div className="absolute top-4 left-4">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold bg-white/95 backdrop-blur-md shadow-sm ${hub.badgeColor}`}>
+        <ScrollReveal stagger className="mx-auto grid max-w-7xl gap-6 md:grid-cols-3">
+            {featuredHubs.map((hub) => (
+              <article key={hub.title} className="card-surface card-lift flex flex-col overflow-hidden">
+                <div className="relative h-52 w-full overflow-hidden bg-zinc-200">
+                  <Image src={hub.image} alt={hub.title} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                  <span className="absolute top-4 left-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-zinc-800 backdrop-blur-md">
                     {hub.tag}
                   </span>
                 </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 md:p-7 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-zinc-900 mb-3 group-hover:text-primary transition-colors leading-snug">
-                    {hub.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-zinc-600 leading-relaxed mb-5">
-                    {hub.desc}
-                  </p>
-
-                  <ul className="space-y-2 mb-6">
-                    {hub.points.map((pt, pIdx) => (
-                      <li key={pIdx} className="flex items-center gap-2 text-xs font-medium text-zinc-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-secondary flex-shrink-0" />
-                        <span>{pt}</span>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="mb-3 text-xl leading-snug font-semibold text-zinc-900">{hub.title}</h3>
+                  <p className="mb-5 text-sm leading-relaxed text-zinc-600">{hub.desc}</p>
+                  <ul className="mb-6 space-y-2">
+                    {hub.points.map((pt) => (
+                      <li key={pt} className="flex items-center gap-2 text-sm font-medium text-zinc-700">
+                        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-secondary" />
+                        {pt}
                       </li>
                     ))}
                   </ul>
+                  <Button asChild variant="outline" className="mt-auto w-full rounded-full py-5 font-semibold">
+                    <Link href={hub.href} className="flex items-center justify-center gap-2">
+                      {hub.cta}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
                 </div>
-
-                <Button asChild variant="outline" className="w-full bg-white hover:bg-primary hover:text-white border-zinc-200 font-bold rounded-xl py-5 transition-all group-hover:border-primary">
-                  <Link href={hub.href} className="flex items-center justify-center gap-2">
-                    <span>{hub.cta}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
-
+              </article>
+            ))}
+        </ScrollReveal>
       </div>
     </section>
   )

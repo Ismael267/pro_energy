@@ -8,14 +8,14 @@ export function PageLoader() {
   const [hiding, setHiding] = useState(false)
 
   useEffect(() => {
-    // Start hide animation after 850ms, remove completely from DOM after 1350ms
+    // Start hide animation after 450ms, remove completely from DOM after 800ms
     const hideTimer = setTimeout(() => {
       setHiding(true)
-    }, 850)
+    }, 450)
 
     const removeTimer = setTimeout(() => {
       setLoading(false)
-    }, 1350)
+    }, 800)
 
     return () => {
       clearTimeout(hideTimer)
@@ -41,7 +41,7 @@ export function PageLoader() {
           width={380}
           height={180}
           priority
-          className="h-24 sm:h-28 md:h-32 w-auto object-contain drop-shadow-[0_4px_25px_rgba(0,0,0,0.7)] animate-in fade-in zoom-in-95 duration-700"
+          className="h-24 sm:h-28 md:h-32 w-auto object-contain drop-shadow-[0_4px_25px_rgba(0,0,0,0.7)] animate-in fade-in zoom-in-95 duration-300"
         />
 
         {/* Animated Brand Gradient Line */}

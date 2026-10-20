@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import { Mail, Phone, MapPin, Send, CheckCircle2, PhoneCall, Sparkles } from "lucide-react"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -62,23 +62,24 @@ export function ContactFormSection() {
     e.preventDefault()
     setSubmitting(true)
 
-    // Simulate reliable submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800))
+      await toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 800)),
+        {
+          loading: "Envoi de votre demande…",
+          success: "Demande reçue. Notre équipe commerciale vous recontacte rapidement.",
+          error: "Erreur d'envoi. Appelez-nous au 04 01 01 94.",
+        }
+      )
       setSubmitted(true)
-      toast.success("Demande reçue avec succès ! Notre équipe commerciale vous contactera rapidement.")
       setFormData({ name: "", company: "", email: "", phone: "", needType: "Proposition tarifaire", message: "" })
-    } catch {
-      toast.error("Erreur d'envoi. Veuillez nous contacter directement au 04 01 01 94.")
     } finally {
       setSubmitting(false)
     }
   }
 
   return (
-    <>
-      <Toaster position="bottom-right" />
-      <section id="contact" className="py-20 md:py-32 bg-white relative overflow-hidden">
+      <section id="contact" className="relative overflow-hidden bg-white py-20 md:py-32">
         <div className="container mx-auto px-4 relative">
           
           {/* Header */}
@@ -131,7 +132,7 @@ export function ContactFormSection() {
                 return (
                   <div
                     key={i}
-                    className={`bg-zinc-50 rounded-2xl p-5 border ${info.border} shadow-sm transition-all ${
+                    className={`card-surface rounded-2xl p-5 ${info.border} ${
                       info.highlight ? "ring-2 ring-secondary/40 bg-secondary/5" : ""
                     }`}
                   >
@@ -172,7 +173,7 @@ export function ContactFormSection() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="bg-zinc-50 border-zinc-200 rounded-xl h-10 text-sm"
+                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 text-sm focus-visible:ring-primary/30"
                         placeholder="Votre nom"
                       />
                     </div>
@@ -184,7 +185,7 @@ export function ContactFormSection() {
                         id="company"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="bg-zinc-50 border-zinc-200 rounded-xl h-10 text-sm"
+                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
                         placeholder="Société / Projet"
                       />
                     </div>
@@ -201,7 +202,7 @@ export function ContactFormSection() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="bg-zinc-50 border-zinc-200 rounded-xl h-10 text-sm"
+                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
                         placeholder="email@domaine.com"
                       />
                     </div>
@@ -215,7 +216,7 @@ export function ContactFormSection() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="bg-zinc-50 border-zinc-200 rounded-xl h-10 text-sm"
+                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
                         placeholder="04 XX XX XX / +226..."
                       />
                     </div>
@@ -228,7 +229,7 @@ export function ContactFormSection() {
                     <select
                       value={formData.needType}
                       onChange={(e) => setFormData({ ...formData, needType: e.target.value })}
-                      className="w-full bg-zinc-50 border border-zinc-200 rounded-xl h-10 px-3 text-xs md:text-sm text-zinc-800"
+                      className="h-11 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 text-zinc-800 outline-none transition-[border-color,box-shadow] duration-150 focus:border-primary focus:ring-2 focus:ring-primary/20"
                     >
                       <option value="Proposition tarifaire">Demande de proposition tarifaire (Volumes)</option>
                       <option value="Solution BTP sur chantier">Solution BTP & Citerne sur chantier</option>
@@ -248,7 +249,7 @@ export function ContactFormSection() {
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="bg-zinc-50 border-zinc-200 min-h-28 resize-none rounded-xl text-sm"
+                      className="min-h-28 resize-none rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
                       placeholder="Précisez votre activité, vos volumes réguliers, votre localisation..."
                     />
                   </div>
@@ -256,7 +257,7 @@ export function ContactFormSection() {
                   <Button
                     type="submit"
                     disabled={submitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl py-5 text-sm md:text-base font-bold shadow-md shadow-primary/20 flex items-center justify-center gap-2"
+                    className="pressable w-full rounded-xl bg-primary py-5 text-sm font-bold text-white shadow-md shadow-primary/20 md:text-base"
                   >
                     {submitting ? (
                       "Envoi en cours..."
@@ -278,6 +279,5 @@ export function ContactFormSection() {
           </div>
         </div>
       </section>
-    </>
   )
 }

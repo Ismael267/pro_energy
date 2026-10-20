@@ -69,7 +69,7 @@ export function ValuesSection() {
               return (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all border border-zinc-100 hover:border-primary/20"
+                  className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-[box-shadow,border-color] duration-200 border border-zinc-100 hover:border-primary/20"
                 >
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
                     <Icon className="w-7 h-7 text-primary" />
