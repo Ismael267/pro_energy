@@ -1,19 +1,19 @@
 import { Button } from "@/components/ui/button"
-import { Play } from "lucide-react"
 import Image from "next/image"
 
 export function AboutSection() {
   return (
-    <section id="apropos" className="py-20 md:py-32 bg-white">
+    <section id="apropos" className="bg-background py-20 md:py-32">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          <div className="relative rounded-lg overflow-hidden shadow-2xl aspect-video bg-zinc-100 flex items-center justify-center group cursor-pointer">
-            <Image src="/pro-energy-station-full.png" alt="Station PRO energy" fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Play className="w-8 h-8 text-primary ml-1" fill="currentColor" />
-              </div>
-            </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-zinc-100 shadow-xl">
+            <Image
+              src="/station-pro-energy-reelle.jpg"
+              alt="Station ProEnergy : auvent, pompes et boutique aux couleurs de la marque"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
 
           <div>
@@ -29,9 +29,15 @@ export function AboutSection() {
               la route, aux transporteurs, aux entreprises et aux communautés locales.
             </p>
             <p className="text-zinc-600 mb-6 leading-relaxed">
-              Aujourd'hui, elle s'appuie sur un réseau de cinq stations-service, 
-              <span className="font-bold text-primary"> (TITA, Ramongo, Koloko, Barma et Zonsé)</span> qui s'approvisionnent exclusivement
+              Aujourd'hui, elle s'appuie sur un réseau de six stations-service, 
+              <span className="font-bold text-primary"> (TITA, Ramongo, Koloko, Barma, Zonsé et Koudougou 1)</span> qui s'approvisionnent exclusivement
               auprès de la marque.
+            </p>
+            <p className="text-zinc-600 mb-6 leading-relaxed">
+              Acteur du secteur de l'énergie, ProEnergy accompagne les stations-service, les acteurs du BTP, les
+              secteurs miniers ainsi que les transporteurs, avec des solutions adaptées à leurs besoins en
+              approvisionnement énergétique. Notre ambition : construire une relation durable avec nos clients à
+              travers la disponibilité des produits, la fiabilité du service et la proximité.
             </p>
             <p className="text-zinc-600 mb-6 leading-relaxed">
               Chaque jour, nos équipes s'engagent à offrir un accueil chaleureux, une gestion rigoureuse des

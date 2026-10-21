@@ -38,13 +38,13 @@ export function TeamSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {team.map((member, index) => (
-            <Card key={index} className="border-none bg-white hover:shadow-xl transition-all group overflow-hidden">
+            <Card key={index} className="border-none bg-white hover:shadow-xl transition-shadow duration-200 group overflow-hidden">
               <div className="relative h-64 overflow-hidden">
                 <Image
                   src={member.image || "/placeholder.svg"}
                   alt={member.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="object-cover group-hover:scale-[1.04] transition-transform duration-300 ease-[var(--ease-out)]"
                 />
               </div>
               <CardContent className="p-6 text-center">
