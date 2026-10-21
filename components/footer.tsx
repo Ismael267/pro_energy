@@ -21,7 +21,7 @@ const footerLinks = {
     { label: "À Propos de ProEnergy", href: "/a-propos" },
     { label: "Vision, Mission & Valeurs", href: "/a-propos#valeurs" },
     { label: "Notre Équipe", href: "/a-propos#equipe" },
-    { label: "Nos 5 Stations", href: "/stations" },
+    { label: "Nos 6 Stations", href: "/stations" },
     { label: "Contact & Devis", href: "/contact" },
   ],
 }

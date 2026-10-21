@@ -6,11 +6,11 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { SectionHeading } from "@/components/section-heading"
 
 const galleryImages = [
+  { src: "/station-pro-energy-reelle.jpg", alt: "Station ProEnergy aux couleurs de la marque" },
   { src: "/pro-energy-station-full.png", alt: "Vue extérieure station PRO ENERGY" },
   { src: "/pro-energy-cafe-shop.png", alt: "Café Shop PRO ENERGY" },
   { src: "/pro-energy-price-sign.png", alt: "Panneau de prix" },
   { src: "/pro-energy-3d-mockup.png", alt: "Maquette 3D de la station" },
-  { src: "/station-service-moderne-pompes.jpg", alt: "Pompes à essence" },
   { src: "/lavage-auto-professionnel.jpg", alt: "Service lavage auto" },
 ]
 

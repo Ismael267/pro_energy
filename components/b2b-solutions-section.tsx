@@ -4,6 +4,7 @@ import { Fuel, ShieldCheck, Truck, Users, TrendingUp, Handshake, HardHat, Buildi
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 const whyChooseUs = [
   {
@@ -48,7 +49,7 @@ const b2bSectors = [
   {
     id: "stations",
     icon: Fuel,
-    badge: "Grands Volumes",
+    badge: "Grands Volumes & Contrat de couleur",
     title: "Stations & Gros Consommateurs",
     subtitle: "Une offre conçue pour les professionnels qui recherchent un fournisseur capable de les accompagner sur leurs volumes.",
     forWho: [
@@ -59,6 +60,7 @@ const b2bSectors = [
     ],
     proposals: [
       "Étude de vos volumes de consommation",
+      "Habillage de la station aux couleurs ProEnergy (contrat de couleur)",
       "Proposition commerciale adaptée à votre besoin",
       "Conditions tarifaires compétitives selon les volumes",
       "Organisation des approvisionnements",
@@ -71,12 +73,12 @@ const b2bSectors = [
     id: "btp",
     icon: HardHat,
     badge: "Solution Sur Site",
-    title: "Entreprises BTP : Le carburant sur chantier",
-    subtitle: "Pour les entreprises de BTP et les grands chantiers, ProEnergy étudie une solution d'approvisionnement directement sur site.",
+    title: "BTP, mines & transporteurs : le carburant sur site",
+    subtitle: "Pour les entreprises de BTP, de mine et de transport, ProEnergy peut étudier une solution d'approvisionnement directement sur site, selon les besoins et les conditions du projet.",
     steps: [
-      { num: "01", title: "CITERNE", desc: "Mise en place d'une citerne de stockage adaptée au besoin du site." },
+      { num: "01", title: "CUVE EXTERNE", desc: "Mise en place d'une citerne adaptée au besoin du site." },
       { num: "02", title: "POMPE", desc: "Mise à disposition d'une solution de distribution sur site, selon le projet." },
-      { num: "03", title: "APPROVISIONNEMENT", desc: "Organisation des livraisons de carburant selon les besoins du chantier." },
+      { num: "03", title: "APPROVISIONNEMENT", desc: "Livraisons de carburant selon les besoins du chantier, du site minier ou de l'entreprise." },
       { num: "04", title: "SUIVI", desc: "Accompagnement pour le suivi des volumes livrés et consommés." },
     ],
     benefits: [
@@ -86,7 +88,7 @@ const b2bSectors = [
       { title: "Fournisseur unique", desc: "Centralisation de vos besoins auprès d'un même partenaire." },
     ],
     highlight: "Votre chantier. Votre carburant. Votre solution ProEnergy.",
-    ctaText: "Installer une solution sur chantier",
+    ctaText: "Installer une solution sur site",
   },
   {
     id: "flottes",
@@ -332,6 +334,16 @@ export function B2bSolutionsSection() {
                       <p className="text-xs text-zinc-600 leading-relaxed">{bf.desc}</p>
                     </div>
                   ))}
+                </div>
+
+                <div className="relative mb-6 aspect-[835/663] overflow-hidden rounded-xl border border-zinc-100 bg-zinc-50">
+                  <Image
+                    src="/citerne-chantier-proenergy.jpg"
+                    alt="ProEnergy accompagne vos chantiers : citerne de stockage, pompe de distribution, approvisionnement régulier et suivi des consommations, directement sur votre site."
+                    fill
+                    sizes="(min-width: 1024px) 64rem, 100vw"
+                    className="object-contain"
+                  />
                 </div>
 
                 <div className="text-center bg-zinc-900 text-white py-3 px-5 rounded-xl text-xs md:text-sm font-bold text-secondary">

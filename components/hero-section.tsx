@@ -24,7 +24,7 @@ const slides = [
   {
     image: "/pro-energy-cafe-shop.png",
     eyebrow: "Un réseau toujours proche",
-    title: "Cinq stations. Une même exigence de service.",
+    title: "Six stations. Une même exigence de service.",
     description: "Carburants, services automobiles, café-shop : l'essentiel pour vos trajets, 24h/24 et 7j/7.",
     primary: { label: "Trouver une station", href: "/stations" },
   },
@@ -33,7 +33,7 @@ const slides = [
 const services = [
   { icon: HardHat, label: "Chantiers", detail: "Carburant sur site", href: "/solutions-pro#btp" },
   { icon: Truck, label: "Flottes", detail: "Approvisionnement maîtrisé", href: "/solutions-pro#flottes" },
-  { icon: MapPin, label: "Stations", detail: "5 sites, ouverts 24/7", href: "/stations" },
+  { icon: MapPin, label: "Stations", detail: "6 sites, ouverts 24/7", href: "/stations" },
 ]
 
 export function HeroSection() {
@@ -103,7 +103,7 @@ export function HeroSection() {
               </Link>
               <Link href="/stations" className="quick-card flex items-start gap-3 rounded-xl p-4">
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[#c5e85c]/15 text-[#c5e85c]"><MapPin className="h-5 w-5" /></span>
-                <span><span className="block text-[11px] font-bold tracking-wider text-[#c5e85c] uppercase">Réseau de proximité</span><span className="mt-1 block text-sm font-semibold text-white">5 stations à votre service, 24h/24.</span></span>
+                <span><span className="block text-[11px] font-bold tracking-wider text-[#c5e85c] uppercase">Réseau de proximité</span><span className="mt-1 block text-sm font-semibold text-white">6 stations à votre service, 24h/24.</span></span>
               </Link>
             </div>
           </div>
@@ -116,7 +116,7 @@ export function HeroSection() {
             <p className="mt-5 text-base font-bold text-white">PRO ENERGY Industries</p>
             <p className="mt-1 text-xs text-zinc-300">L&apos;énergie qui accompagne vos ambitions.</p>
             <div className="mt-5 grid grid-cols-2 gap-2 border-t border-white/10 pt-5 text-xs text-zinc-300">
-              <span className="rounded-lg bg-white/6 p-2"><strong className="block text-lg text-white">5</strong>Stations</span>
+              <span className="rounded-lg bg-white/6 p-2"><strong className="block text-lg text-white">6</strong>Stations</span>
               <span className="rounded-lg bg-white/6 p-2"><strong className="block text-lg text-white">24/7</strong>Service</span>
             </div>
           </aside>

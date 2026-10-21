@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | PRO ENERGY",
   },
   description:
-    "Votre partenaire de référence pour l'approvisionnement fiable en carburant au Burkina Faso. Solutions pour chantiers BTP avec citernes sur site, transporteurs, flottes et réseau de 5 stations-service ouvertes 24h/24 et 7j/7.",
+    "Votre partenaire de référence pour l'approvisionnement fiable en carburant au Burkina Faso. Solutions pour chantiers BTP avec citernes sur site, transporteurs, flottes et réseau de 6 stations-service ouvertes 24h/24 et 7j/7.",
   keywords: [
     "ProEnergy",
     "PRO ENERGY",
@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     "station service Koloko",
     "station service Zonsé",
     "station service Barma",
+    "station essence Koudougou",
+    "carburant site minier Burkina Faso",
+    "contrat de couleur station-service",
     "lavage auto Ouagadougou",
     "vidange moteur Burkina",
   ],
@@ -47,7 +50,7 @@ export const metadata: Metadata = {
     siteName: "PRO ENERGY",
     title: "PRO ENERGY | Approvisionnement en Carburant & Stations-Service au Burkina Faso",
     description:
-      "Du carburant à la solution complète d'approvisionnement : chantiers BTP, transporteurs, flottes professionnelles et 5 stations-service 24/7.",
+      "Du carburant à la solution complète d'approvisionnement : chantiers BTP, transporteurs, flottes professionnelles et 6 stations-service 24/7.",
     images: [
       {
         url: "/pro-energy-station-full.png",

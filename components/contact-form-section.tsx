@@ -1,18 +1,16 @@
 "use client"
 
-import type React from "react"
 import { useState } from "react"
-import { Mail, Phone, MapPin, Send, CheckCircle2, PhoneCall, Sparkles } from "lucide-react"
+import { Mail, MapPin, Send, CheckCircle2, PhoneCall, Copy } from "lucide-react"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 
 const actionPoints = [
-  "Obtenir une proposition tarifaire personnalisée",
-  "Sécuriser votre approvisionnement régulier",
-  "Installer une solution de stockage / citerne sur votre chantier",
-  "Réduire les déplacements de vos engins",
+  "Établir un contrat de couleur",
+  "Obtenir une proposition tarifaire",
+  "Sécuriser votre approvisionnement",
+  "Installer une solution de stockage sur votre chantier ou votre site minier",
+  "Réduire les déplacements de vos véhicules pour l'approvisionnement",
   "Disposer d'un fournisseur unique pour vos besoins en carburant",
 ]
 
@@ -39,42 +37,55 @@ const contactInfo = [
     icon: MapPin,
     title: "Siège & Réseau",
     lines: ["123 Avenue de la République", "Ouagadougou, Burkina Faso"],
-    sub: "Réseau de 5 stations en exploitation",
+    sub: "Réseau de 6 stations en exploitation",
     accent: "bg-primary text-white",
     border: "border-primary/20",
     highlight: false,
   },
 ]
 
+const CONTACT_EMAIL = "proenergy.k@gmail.com"
+
+const needTypes = [
+  "Demande de proposition tarifaire (volumes)",
+  "Contrat de couleur (habillage de station)",
+  "Solution BTP, mine & citerne sur site",
+  "Approvisionnement flotte & transporteurs",
+  "Alimentation groupes électrogènes",
+  "Approvisionnement station-service",
+  "Autre demande",
+]
+
+const buildMailto = (needType: string) => {
+  const subject = `Demande commerciale — ${needType}`
+  const body = [
+    "Bonjour l'équipe PRO ENERGY,",
+    "",
+    `Je vous contacte pour : ${needType}.`,
+    "",
+    "Nom & prénom : ",
+    "Entreprise / organisation : ",
+    "Téléphone : ",
+    "Localisation : ",
+    "Volumes estimés (litres / mois) : ",
+    "",
+    "Détails de mon besoin :",
+    "",
+    "",
+    "Cordialement,",
+  ].join("\n")
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
+
 export function ContactFormSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    needType: "Proposition tarifaire",
-    message: "",
-  })
-  const [submitting, setSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [needType, setNeedType] = useState(needTypes[0])
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitting(true)
-
+  const copyEmail = async () => {
     try {
-      await toast.promise(
-        new Promise((resolve) => setTimeout(resolve, 800)),
-        {
-          loading: "Envoi de votre demande…",
-          success: "Demande reçue. Notre équipe commerciale vous recontacte rapidement.",
-          error: "Erreur d'envoi. Appelez-nous au 04 01 01 94.",
-        }
-      )
-      setSubmitted(true)
-      setFormData({ name: "", company: "", email: "", phone: "", needType: "Proposition tarifaire", message: "" })
-    } finally {
-      setSubmitting(false)
+      await navigator.clipboard.writeText(CONTACT_EMAIL)
+      toast.success("Adresse email copiée.")
+    } catch {
+      toast.error(`Copie impossible. Notre adresse : ${CONTACT_EMAIL}`)
     }
   }
 
@@ -93,7 +104,7 @@ export function ContactFormSection() {
               <span className="gradient-text">votre solution d'approvisionnement</span>
             </h2>
             <p className="text-zinc-600 text-sm md:text-base max-w-xl mx-auto">
-              Pour une proposition commerciale personnalisée, contactez directement notre équipe commerciale ou remplissez le formulaire.
+              Pour une proposition commerciale personnalisée, contactez directement notre équipe commerciale ou écrivez-nous par email.
             </p>
           </div>
 
@@ -162,113 +173,73 @@ export function ContactFormSection() {
               <div>
                 <div className="h-1.5 bg-gradient-to-r from-primary via-primary/70 to-secondary" />
 
-                <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-zinc-800 mb-1.5">
-                        Nom & Prénom <span className="text-primary">*</span>
-                      </label>
-                      <Input
-                        id="name"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 text-sm focus-visible:ring-primary/30"
-                        placeholder="Votre nom"
-                      />
+                <div className="p-6 md:p-8">
+                  <h3 className="text-lg font-bold text-zinc-900">Écrivez-nous par email</h3>
+                  <p className="mt-1 text-sm text-zinc-600">
+                    Choisissez votre besoin : votre messagerie s&apos;ouvre avec un message prêt à compléter.
+                  </p>
+
+                  <fieldset className="mt-6">
+                    <legend className="mb-2 text-xs font-semibold text-zinc-800">Type de besoin</legend>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {needTypes.map((type) => {
+                        const selected = type === needType
+                        return (
+                          <label
+                            key={type}
+                            className={`pressable flex cursor-pointer items-center gap-2.5 rounded-xl border px-3.5 py-3 text-sm font-medium ${
+                              selected
+                                ? "border-primary bg-primary/5 text-zinc-900"
+                                : "border-zinc-200 bg-zinc-50 text-zinc-700 hover:border-zinc-300"
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name="needType"
+                              value={type}
+                              checked={selected}
+                              onChange={() => setNeedType(type)}
+                              className="h-4 w-4 accent-[var(--primary)]"
+                            />
+                            {type}
+                          </label>
+                        )
+                      })}
                     </div>
-                    <div>
-                      <label htmlFor="company" className="block text-xs font-semibold text-zinc-800 mb-1.5">
-                        Entreprise / Organisation
-                      </label>
-                      <Input
-                        id="company"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
-                        placeholder="Société / Projet"
-                      />
-                    </div>
+                  </fieldset>
+
+                  <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs leading-relaxed text-zinc-600">
+                    <p className="font-semibold text-zinc-800">Le message contiendra :</p>
+                    <p className="mt-1">
+                      Objet « Demande commerciale — {needType} », puis vos coordonnées, votre localisation, vos volumes
+                      estimés et le détail de votre besoin à compléter.
+                    </p>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-zinc-800 mb-1.5">
-                        Email professionnel <span className="text-primary">*</span>
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
-                        placeholder="email@domaine.com"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-zinc-800 mb-1.5">
-                        Téléphone <span className="text-primary">*</span>
-                      </label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="h-11 rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
-                        placeholder="04 XX XX XX / +226..."
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-zinc-800 mb-1.5">
-                      Type de besoin
-                    </label>
-                    <select
-                      value={formData.needType}
-                      onChange={(e) => setFormData({ ...formData, needType: e.target.value })}
-                      className="h-11 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 text-zinc-800 outline-none transition-[border-color,box-shadow] duration-150 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                    >
-                      <option value="Proposition tarifaire">Demande de proposition tarifaire (Volumes)</option>
-                      <option value="Solution BTP sur chantier">Solution BTP & Citerne sur chantier</option>
-                      <option value="Flotte & Transporteurs">Approvisionnement Flotte & Transporteurs</option>
-                      <option value="Groupes électrogènes">Alimentation Groupes Électrogènes</option>
-                      <option value="Station-service revendeur">Approvisionnement Station-Service</option>
-                      <option value="Autre">Autre demande</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-xs font-semibold text-zinc-800 mb-1.5">
-                      Détails de votre besoin ou volumes estimés <span className="text-primary">*</span>
-                    </label>
-                    <Textarea
-                      id="message"
-                      required
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="min-h-28 resize-none rounded-xl border-zinc-200 bg-zinc-50 focus-visible:ring-primary/30"
-                      placeholder="Précisez votre activité, vos volumes réguliers, votre localisation..."
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={submitting}
-                    className="pressable w-full rounded-xl bg-primary py-5 text-sm font-bold text-white shadow-md shadow-primary/20 md:text-base"
-                  >
-                    {submitting ? (
-                      "Envoi en cours..."
-                    ) : (
-                      <>
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                    <Button asChild className="pressable flex-1 rounded-xl bg-primary py-5 text-sm font-bold text-white shadow-md shadow-primary/20 md:text-base">
+                      <a href={buildMailto(needType)}>
                         <Send className="w-4 h-4" />
-                        Envoyer ma demande commerciale
-                      </>
-                    )}
-                  </Button>
-                </form>
+                        Écrire à l&apos;équipe commerciale
+                      </a>
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={copyEmail}
+                      className="rounded-xl py-5 text-sm font-semibold"
+                    >
+                      <Copy className="w-4 h-4" />
+                      Copier l&apos;adresse
+                    </Button>
+                  </div>
+                  <p className="mt-3 text-center text-xs text-zinc-500">
+                    Pas de messagerie configurée ? Écrivez à{" "}
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-primary underline-offset-2 hover:underline">
+                      {CONTACT_EMAIL}
+                    </a>
+                  </p>
+                </div>
               </div>
 
               <div className="bg-zinc-50 px-6 py-3 border-t border-zinc-100 text-[11px] text-zinc-500 text-center">

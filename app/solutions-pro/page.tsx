@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { B2bSolutionsSection } from "@/components/b2b-solutions-section";
 import { MethodologySection } from "@/components/methodology-section";
 import { ContactFormSection } from "@/components/contact-form-section";
+import { StationPartnershipSection } from "@/components/station-partnership-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const metadata: Metadata = {
@@ -34,6 +35,9 @@ export default function SolutionsProPage() {
       <Header />
       <ScrollReveal>
         <B2bSolutionsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <StationPartnershipSection />
       </ScrollReveal>
       <ScrollReveal>
         <MethodologySection />

@@ -17,7 +17,7 @@ const featuredHubs = [
   },
   {
     tag: "Réseau & particuliers",
-    title: "Cinq stations ouvertes 24h/24 et 7j/7",
+    title: "Six stations ouvertes 24h/24 et 7j/7",
     desc: "Carburants premium, lavage, vidange rapide et boutiques café-shop, partout près de vous.",
     points: ["Super et diesel", "Lavage professionnel", "Café-shop"],
     image: "/pro-energy-station-full.png",
